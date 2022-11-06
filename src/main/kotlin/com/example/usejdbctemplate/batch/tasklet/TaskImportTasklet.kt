@@ -24,9 +24,9 @@ class TaskImportTasklet : Tasklet {
 
     override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
 
+        println("taskId: $taskId")
         if (!taskId.isNullOrEmpty()) {
             val task = jdbcTemplate.queryForObject("SELECT * FROM task WHERE id = ?", TaskEntity.mapper, taskId)
-            println("taskId: $taskId")
             println("取得できたタスクID:" + task?.name)
         } else {
             throw Exception("引数を与えて実行して下さい。")
