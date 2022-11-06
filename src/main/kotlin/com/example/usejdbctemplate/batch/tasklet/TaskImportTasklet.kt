@@ -27,7 +27,7 @@ class TaskImportTasklet : Tasklet {
         println("taskId: $taskId")
         if (!taskId.isNullOrEmpty()) {
             val task = jdbcTemplate.queryForObject("SELECT * FROM task WHERE id = ?", TaskEntity.mapper, taskId)
-            println("取得できたタスクID:" + task?.name)
+            println("取得できたタスク名:" + task?.name)
         } else {
             throw Exception("引数を与えて実行して下さい。")
         }
